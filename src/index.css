@@ -1,0 +1,971 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    html {
+        min-width: 384px;
+        min-height: 600px;
+        font-family: Inter, sans-serif;
+    }
+    body {
+        font-family: Inter, sans-serif;
+    }
+}
+body.dark {
+    background: black;
+}
+.dark .extensionView {
+    background: #2b2d30;
+}
+.dark .fullscreenView {
+    background: #2b2d30;
+}
+.extensionView {
+    min-width: 420px;
+    height: 100vh;
+    max-width: 600px;
+}
+.extensionWidth {
+    width: 420px;
+}
+.fullscreenView {
+    width: 420px;
+    height: 100vh;
+    margin: 0 auto;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+.gridView .lazy-load-image-background.blur {
+    height: 100%;
+}
+.gridView .lazy-load-image-background.blur img {
+    height: 100%;
+}
+
+.scan-region-highlight-svg,
+.code-outline-highlight {
+    stroke: #cc703c !important;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+@layer components {
+    .heading1 {
+        @apply font-sans text-xxl font-light leading-12 tracking-tight text-text-900 dark:text-textDark-900;
+    }
+
+    .heading2 {
+        @apply font-sans text-xl font-normal leading-8 tracking-tight text-text-900 dark:text-textDark-900;
+    }
+
+    .paragraph1 {
+        @apply font-sans text-base font-normal leading-5 tracking-tight text-text-900 dark:text-textDark-900;
+    }
+
+    .paragraph2 {
+        @apply font-sans text-sm font-normal leading-5 tracking-tight text-text-900 dark:text-textDark-900;
+    }
+
+    .sub-title {
+        @apply font-sans text-lg font-normal leading-6 tracking-tight text-text-900 dark:text-textDark-900;
+    }
+
+    .label1 {
+        @apply font-sans text-base font-normal leading-5 tracking-tight text-text-900 dark:text-textDark-900;
+    }
+
+    .label2 {
+        @apply font-sans text-sm font-normal leading-4 tracking-tight text-text-900 dark:text-textDark-900;
+    }
+
+    .label3 {
+        @apply font-sans text-xs font-normal leading-4 tracking-tight text-text-900 dark:text-textDark-900;
+    }
+
+    .cap-label {
+        @apply font-sans text-xs font-normal uppercase leading-4 tracking-tight text-text-900 dark:text-textDark-900;
+    }
+
+    .btn-primary {
+        @apply py-4 px-5 relative bg-primary-700 text-base text-white leading-4 tracking-tight font-medium rounded-xl hover:bg-primary-900 focus:outline-none disabled:opacity-50;
+    }
+
+    .btn-secondary {
+        @apply py-4 px-5 bg-white text-primary-700 leading-4 tracking-tight font-medium rounded-xl hover:bg-primary-100  focus:outline-none disabled:opacity-50;
+    }
+
+    .btn-iconBtn {
+        @apply relative flex pl-4 pr-11 py-5 border text-base font-medium leading-4 tracking-tight rounded-xl text-white bg-primary-700 hover:bg-primary-900 focus:outline-none disabled:opacity-50;
+    }
+
+    .floating-btn {
+        @apply flex items-center gap-2 py-2.5 px-4 text-base text-white bg-primary-700 border border-primary-700 border-r-primary-900 hover:border-primary-900 hover:bg-primary-900 focus:outline-none disabled:opacity-50;
+    }
+    .errorMsg {
+        @apply text-red-600 absolute;
+        font-size: 12px;
+        bottom: -32px;
+    }
+
+    input[type="number"]:focus {
+        box-shadow: none;
+    }
+
+    input[type="text"]:focus {
+        box-shadow: none;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .hide-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+    .font-roboto {
+        font-family: "Roboto Mono", monospace;
+    }
+    .tooltip {
+        @apply relative flex flex-col items-center;
+    }
+    .tooltip .tooltipText {
+        @apply absolute top-0 flex-col items-center hidden mb-0 z-10;
+    }
+    .tooltip .tooltipText.bottom {
+        @apply top-full mt-4;
+    }
+    .tooltip .tooltipText.top {
+        @apply top-auto bottom-full  mb-4;
+    }
+    .tooltip .tooltipText.right {
+        @apply top-1/2 left-full -translate-y-1/2 ml-4;
+    }
+    .tooltip .tooltipText .tooltipArrow {
+        @apply absolute w-3 h-3 rotate-45;
+    }
+    .tooltip .tooltipText .tooltipArrow.top {
+        @apply -top-1.5;
+    }
+    .tooltip .tooltipText .tooltipArrow.bottom {
+        @apply -bottom-1.5;
+    }
+    .tooltip .tooltipText .tooltipArrow.left {
+        @apply -left-1.5 top-1/2 transform -translate-y-1/2;
+    }
+    .errorBoundary {
+        width: 420px;
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .pageNotFound {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .walletList {
+        @apply flex flex-col;
+    }
+    .walletList .walletListItem {
+        position: relative;
+        border: 1px solid #ececec;
+        border-radius: 8px;
+        background: #ffffff;
+        cursor: pointer;
+        padding: 22px 20px;
+        margin-bottom: 16px;
+        width: 33.75rem;
+        height: 70px;
+        transition: all 0.3s ease-out;
+    }
+    .dark .walletList .walletListItem {
+        border: 1px solid #43474d;
+        background: #43474d;
+    }
+    .walletList .walletListItem .walletListIcon {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 20px;
+        transition: all 0.2s ease-in;
+        object-fit: cover;
+    }
+    .walletList .walletListItem:hover {
+        background: #faf1eb;
+        border: 1px solid #cc703c;
+        height: 102px;
+    }
+    .dark .walletList .walletListItem:hover {
+        background: #43474d;
+        border: 1px solid #43474d;
+        height: 102px;
+    }
+    .walletList .walletListItem:hover .walletListIcon {
+        transform: translateY(-50%) scale(1.5);
+    }
+    .walletList .walletListItem:hover .walletTitle {
+        margin-bottom: 4px;
+    }
+    .walletList .walletListItem .walletRightArrow {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 20px;
+        opacity: 0;
+        transition: all 0.2s ease-out;
+    }
+    .walletList .walletListItem .walletDesc {
+        overflow: hidden;
+        height: 0;
+        opacity: 0;
+        transition: all 0.2s ease-out;
+    }
+    .walletList .walletListItem:hover .walletDesc {
+        overflow: visible;
+        height: auto;
+        opacity: 1;
+        transition: all 0.2s ease-out;
+    }
+    .walletList .walletListItem:hover .walletRightArrow {
+        opacity: 1;
+    }
+    .nftListCard {
+        transition: transform 0.4s ease-out;
+    }
+    .nftListCard:hover .bottomOverlay {
+        transform: scale(44);
+    }
+    .nftListCard:hover .cardName {
+        color: white;
+    }
+    .nftListCard .cardName {
+        transition: 0.6s ease-out;
+    }
+    .nftListCard:hover .cardUser {
+        color: white;
+    }
+    .nftListCard .cardUser {
+        transition: 0.6s ease-out;
+        position: relative;
+        display: inline-block;
+    }
+    .nftListCard .cardUser img {
+        position: absolute;
+        right: -24px;
+        top: 2px;
+        transition: visibility 0.5s, opacity 0.6s ease-out;
+    }
+    .nftListCard:hover .cardUser .verifiedImgHovered {
+        visibility: visible;
+        opacity: 1;
+    }
+    .nftListCard:hover .cardUser .verifiedImgDefault {
+        visibility: hidden;
+        opacity: 0;
+    }
+    .nftListCard .verifiedImgDefault {
+        visibility: visible;
+        opacity: 1;
+    }
+    .nftListCard .verifiedImgHovered {
+        visibility: hidden;
+        opacity: 0;
+    }
+    .nftListCard:hover .nftCards {
+        transform: translateY(200px);
+    }
+    .nftListCard:hover .arrowIcon {
+        opacity: 1;
+        visibility: visible;
+        right: 24px;
+    }
+    .nftListCard .bottomOverlay {
+        position: absolute;
+        width: 32px;
+        height: 32px;
+        overflow: hidden;
+        right: -20px;
+        bottom: -34px;
+        background-color: #cc703c;
+        border-radius: 12px;
+        transition: transform 0.6s ease-out;
+        z-index: -1;
+    }
+    .nftCards {
+        position: absolute;
+        top: 0;
+        right: -28px;
+        height: 100%;
+        z-index: -1;
+        transform: translateY(0);
+        transition: transform 0.3s ease-out;
+    }
+    .nftCards.secondRow {
+        position: absolute;
+        top: 114px;
+        right: -64px;
+        height: 100%;
+    }
+    .nftCards.secondRow.oddCards {
+        position: absolute;
+        top: 54px;
+        right: -64px;
+        height: 100%;
+    }
+    .nftCards.singleCard {
+        position: absolute;
+        top: 52px;
+        right: -16px;
+        height: 100%;
+    }
+    .nftCards.twoCard {
+        position: absolute;
+        top: 48px;
+        right: -16px;
+        height: 100%;
+    }
+    .nftCards.threeCard {
+        position: absolute;
+        top: 50px;
+        right: -26px;
+        height: 100%;
+    }
+    .nftCards .card {
+        display: inline-block;
+        text-align: left;
+        position: relative;
+        transform: translateY(0px) rotate(344deg);
+        margin-right: 4px;
+    }
+    .nftCards .card .cardImageWrapper img {
+        object-fit: cover;
+    }
+    .nftCards .card.smallCard:nth-child(1) {
+        transform: translateY(120px) rotate(344deg);
+    }
+    .nftCards .card.smallCard:nth-child(2) {
+        transform: translateY(60px) rotate(344deg);
+    }
+    .nftCards .card.doubleCard:nth-child(1) {
+        transform: translateY(80px) rotate(344deg);
+    }
+    .nftCards .card.doubleCard:nth-child(2) {
+        transform: rotate(344deg);
+    }
+    .nftCards .card.smallCard .cardImageWrapper img {
+        width: 104px;
+        height: 104px;
+        border-radius: 16px;
+        display: inline-block;
+    }
+    .nftCards.singleCard .card.bigCard .cardImageWrapper img {
+        width: 154px;
+        height: 154px;
+        border-radius: 16px;
+        display: inline-block;
+    }
+    .nftCards.singleCard .card.bigCard .singleVideo {
+        width: 154px;
+        height: 154px;
+        border-radius: 16px;
+        display: inline-block;
+    }
+    .nftCards.twoCard .card.doubleCard .cardImageWrapper img {
+        width: 154px;
+        height: 154px;
+        border-radius: 16px;
+        display: inline-block;
+    }
+    .nftListCard .arrowIcon {
+        position: absolute;
+        right: 48px;
+        bottom: 24px;
+        transform: rotate(180deg);
+        visibility: hidden;
+        transition: right 0.2s ease-out;
+    }
+    .customBoxShadow {
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+    .gridRow .gridColumn div:first-child {
+        margin-right: 8px;
+    }
+    .verifiedImgHovered {
+        width: 16px;
+        height: 16px;
+    }
+    .customGridColumn span {
+        display: block !important;
+    }
+    .w-420 {
+        width: 420px;
+    }
+    .min-h-192 {
+        min-height: 192px;
+    }
+    .nftListPosition {
+        transform: translateY(50px);
+        transition: transform 1s ease-out;
+    }
+    .nftListTransition {
+        transition: transform 1s ease-out;
+        transform: translateY(0px);
+    }
+    .nftGridTransition {
+        transition: transform 1s ease-out;
+        transform: translateY(0px);
+    }
+    .portfolioCardWrapper {
+        transition: all 0.3s ease-out;
+    }
+
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .cardWrapper .portfolioCardBack:nth-child(1) {
+        bottom: -26px;
+    }
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .cardWrapper .portfolioCardBack:nth-child(2) {
+        bottom: -52px;
+    }
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .cardWrapper .portfolioCardBack:nth-child(3) {
+        bottom: -78px;
+    }
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .cardWrapper .portfolioCardBack:nth-child(4) {
+        bottom: -106px;
+    }
+    .portfolioCardHome ~ .cardIconWrapper ~ .emptyDivMax {
+        height: 50px;
+        transition: all 0.3s ease-out;
+    }
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .emptyDivMax {
+        height: 120px;
+    }
+    .portfolioCardHome ~ .cardIconWrapper ~ .emptyDiv {
+        height: 30px;
+        transition: all 0.3s ease-out;
+    }
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .emptyDiv {
+        height: 60px;
+    }
+
+    .cardIconWrapper:hover ~ .cardWrapper .portfolioCardBack:nth-child(1) {
+        bottom: -26px;
+    }
+    .cardIconWrapper:hover ~ .cardWrapper .portfolioCardBack:nth-child(2) {
+        bottom: -52px;
+    }
+    .cardIconWrapper:hover ~ .cardWrapper .portfolioCardBack:nth-child(3) {
+        bottom: -78px;
+    }
+    .cardIconWrapper:hover ~ .cardWrapper .portfolioCardBack:nth-child(4) {
+        bottom: -106px;
+    }
+    .cardIconWrapper ~ .emptyDivMax {
+        height: 50px;
+        transition: all 0.3s ease-out;
+    }
+    .cardIconWrapper:hover ~ .emptyDivMax {
+        height: 120px;
+    }
+    .cardIconWrapper ~ .emptyDiv {
+        height: 30px;
+        transition: all 0.3s ease-out;
+    }
+    .cardIconWrapper:hover ~ .emptyDiv {
+        height: 60px;
+    }
+
+    .singlePortfolioCard {
+        margin-bottom: 16px;
+    }
+    .cardWrapper {
+        position: absolute;
+        height: 188px;
+        width: 100%;
+        z-index: 0;
+        top: 0;
+    }
+    .cardWrapper .portfolioCardBack:nth-child(1) {
+        position: absolute;
+        left: 50%;
+        border-radius: 12px;
+        transition: all 0.2s ease-out;
+        transform: translate(-50%, 0px);
+        z-index: -10;
+        width: 370px;
+        bottom: -10px;
+    }
+    .cardWrapper .portfolioCardBack:nth-child(2) {
+        position: absolute;
+        left: 50%;
+        border-radius: 12px;
+        transition: all 0.2s ease-out;
+        transform: translate(-50%, 0px);
+        z-index: -20;
+        width: 350px;
+        bottom: -20px;
+    }
+    .cardWrapper .portfolioCardBack:nth-child(3) {
+        position: absolute;
+        left: 50%;
+        border-radius: 12px;
+        transition: all 0.2s ease-out;
+        transform: translate(-50%, 0px);
+        z-index: -30;
+        width: 330px;
+        bottom: -30px;
+    }
+    .cardWrapper .portfolioCardBack:nth-child(4) {
+        position: absolute;
+        left: 50%;
+        border-radius: 12px;
+        transition: all 0.2s ease-out;
+        transform: translate(-50%, 0px);
+        z-index: -40;
+        width: 310px;
+        bottom: -40px;
+    }
+
+    .cardWrapper .portfolioSettingCardBack:nth-child(1) {
+        position: absolute;
+        left: 50%;
+        border-radius: 12px;
+        transition: all 0.2s ease-out;
+        transform: translate(-50%, 0px);
+        z-index: -10;
+        width: 370px;
+        bottom: 50px;
+    }
+    .cardWrapper .portfolioSettingCardBack:nth-child(2) {
+        position: absolute;
+        left: 50%;
+        border-radius: 12px;
+        transition: all 0.2s ease-out;
+        transform: translate(-50%, 0px);
+        z-index: -20;
+        width: 350px;
+        bottom: 40px;
+    }
+    .cardWrapper .portfolioSettingCardBack:nth-child(3) {
+        position: absolute;
+        left: 50%;
+        border-radius: 12px;
+        transition: all 0.2s ease-out;
+        transform: translate(-50%, 0px);
+        z-index: -30;
+        width: 330px;
+        bottom: 30px;
+    }
+    .cardWrapper .portfolioSettingCardBack:nth-child(4) {
+        position: absolute;
+        left: 50%;
+        border-radius: 12px;
+        transition: all 0.2s ease-out;
+        transform: translate(-50%, 0px);
+        z-index: -40;
+        width: 310px;
+        bottom: 20px;
+    }
+
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .cardWrapper .portfolioSettingCardBack:nth-child(1) {
+        bottom: 34px;
+    }
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .cardWrapper .portfolioSettingCardBack:nth-child(2) {
+        bottom: 10px;
+    }
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .cardWrapper .portfolioSettingCardBack:nth-child(3) {
+        bottom: -14px;
+    }
+    .portfolioCardHome:hover ~ .cardIconWrapper ~ .cardWrapper .portfolioSettingCardBack:nth-child(4) {
+        bottom: -38px;
+    }
+
+    .cardIconWrapper:hover ~ .cardWrapper .portfolioSettingCardBack:nth-child(1) {
+        bottom: 34px;
+    }
+    .cardIconWrapper:hover ~ .cardWrapper .portfolioSettingCardBack:nth-child(2) {
+        bottom: 10px;
+    }
+    .cardIconWrapper:hover ~ .cardWrapper .portfolioSettingCardBack:nth-child(3) {
+        bottom: -14px;
+    }
+    .cardIconWrapper:hover ~ .cardWrapper .portfolioSettingCardBack:nth-child(4) {
+        bottom: -38px;
+    }
+
+    input[type="file"] {
+        opacity: 0;
+        position: absolute;
+        left: 0;
+        top: 0;
+        z-index: 10;
+        cursor: pointer;
+    }
+    ::-webkit-file-upload-button {
+        cursor: pointer;
+    }
+
+    .homeTab .homeTabList:nth-child(1).active ~ .tabSlider {
+        transform: translateX(0) scaleX(0.333);
+    }
+    .homeTab .homeTabList:nth-child(2).active ~ .tabSlider {
+        transform: translateX(33.333%) scaleX(0.333);
+    }
+    .homeTab .homeTabList:nth-child(3).active ~ .tabSlider {
+        transform: translateX(calc(33.333% * 2)) scaleX(0.333);
+    }
+    .homeTab .tabSlider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: 0 0;
+        transition: transform 0.3s ease-in-out;
+    }
+    .homeTwoTab .homeTabList {
+        width: 100%;
+    }
+    .homeTwoTab .homeTabList:nth-child(1).active ~ .tabSlider {
+        transform: translateX(0) scaleX(0.5);
+    }
+    .homeTwoTab .homeTabList:nth-child(2).active ~ .tabSlider {
+        transform: translateX(50%) scaleX(0.5);
+    }
+    .homeTwoTab .tabSlider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: 0 0;
+        transition: transform 0.3s ease-in-out;
+    }
+    .homeSingleTab .homeTabList {
+        width: 100%;
+    }
+    .homeSingleTab .homeTabList:nth-child(1).active ~ .tabSlider {
+        transform: none;
+    }
+    .homeSingleTab .tabSlider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        transform-origin: 0 0;
+        transition: transform 0.3s ease-in-out;
+    }
+    .customTab {
+        width: auto;
+        display: inline-block;
+    }
+    .customTab .customTabList {
+        width: auto;
+        display: inline-block;
+    }
+    .customTab .customTabList:nth-child(1).active ~ .tabSlider {
+        transform: translateX(0) scaleX(0.333);
+    }
+    .customTab .customTabList:nth-child(2).active ~ .tabSlider {
+        transform: translateX(42%) scaleX(0.333);
+        width: 300px;
+    }
+    .customTab .tabSlider {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 360px;
+        height: 2px;
+        transform-origin: 0 0;
+        transition: transform 0.3s ease-in-out;
+    }
+    .walletCardListHeight {
+        height: 600px;
+    }
+    .walletCardListFullScreenHeight {
+        height: 100vh;
+    }
+    .walletCardItem:last-child {
+        margin-bottom: 70px;
+    }
+    .errorShake {
+        animation: shake 0.2s ease-in-out 0s 2;
+    }
+    @keyframes shake {
+        0% {
+            margin-left: 0;
+        }
+        25% {
+            margin-left: 4px;
+        }
+        75% {
+            margin-left: -4px;
+        }
+        100% {
+            margin-left: 0;
+        }
+    }
+    .expandedWalletCard {
+        position: absolute;
+        top: -68px;
+        left: -16px;
+        width: 420px;
+        height: 600px;
+        z-index: 99;
+        transform: none !important;
+    }
+    .normalCard {
+        transform: none !important;
+    }
+    .loaderWrapper {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 420px;
+        height: 600px;
+        z-index: 99;
+    }
+    /* .loaderWrapper .spinnerLoader {
+        position: absolute;
+        top: 42%;
+        left: 45%;
+    } */
+    .spinnerLoader {
+        width: 75px;
+        height: 75px;
+        margin: 0;
+        background: transparent;
+        border-top: 4px solid #cc703c;
+        border-bottom: 4px solid transparent;
+        border-left: 4px solid #cc703c;
+        border-right: 4px solid transparent;
+        border-radius: 50%;
+        -webkit-animation: 1.1s spin linear infinite;
+        animation: 1.1s spin linear infinite;
+    }
+    .animFadeIn1 {
+        animation: fade-in 0.3s ease-out;
+    }
+    .animFadeIn2 {
+        animation: fade-in2 0.5s ease-out;
+    }
+
+    .slideUpList {
+        width: 250px;
+        height: 48px;
+        position: relative;
+        text-align: left;
+        -webkit-animation: slide 5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+        animation: slide 5s cubic-bezier(0.68, -0.55, 0.27, 1.55) infinite;
+        padding-left: 8px;
+    }
+
+    .slideUpList li {
+        position: absolute;
+        top: 200%;
+        font-size: 32px;
+        white-space: no-wrap;
+    }
+    .slideUpList li:first-child {
+        top: 100%;
+    }
+    .slideUpList li:last-child {
+        top: 300%;
+    }
+    .buyBtn img {
+        transform: rotate(140deg);
+    }
+    .sendBtn:hover img {
+        animation: sendAnimation 0.6s ease-in-out alternate;
+    }
+    .receiveBtn:hover img {
+        animation: receiveAnimation 0.6s ease-in-out alternate;
+    }
+    .swapBtn:hover img {
+        animation: swapAnimation 0.6s ease-in-out;
+    }
+    .btnLoader {
+        position: absolute;
+        top: 0;
+        right: -30px;
+        width: 20px;
+        height: 20px;
+        display: inline-block;
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50%;
+        border-top-color: #fff;
+        animation: spin 1s ease-in-out infinite;
+        -webkit-animation: spin 1s ease-in-out infinite;
+    }
+    .addWalletCard {
+        box-shadow: 0px 34px 34px rgb(0 0 0 / 25%);
+        transition: background-color 0.3s ease-in-out;
+    }
+    .addWalletCardPlaceholder {
+        background: rgba(217, 217, 217, 0.13);
+    }
+    .CircularProgressbar .CircularProgressbar-text {
+        @apply font-sans text-base;
+    }
+
+    .truncateText {
+        width: 200px;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    .deselectInput input {
+        background: #cc703c;
+        border: none;
+    }
+    .deselectInput [type="checkbox"]::before {
+        position: absolute;
+        width: 10px;
+        height: 2px;
+        content: "";
+        background: #fff;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        left: 50%;
+    }
+
+    .disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.6;
+    }
+
+    .manageNetworkList {
+        height: calc(100vh - 290px);
+    }
+    .generatePhraseGradient {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 53.65%);
+    }
+    .dark .generatePhraseGradient {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #2b2d30 53.65%);
+        left: 8px;
+    }
+    .chooseWalletGradient {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #ffffff 90.62%);
+    }
+    .dark .chooseWalletGradient {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #2b2d30 90.62%);
+    }
+
+    .more-icon-wrapper .active-icon {
+        display: none;
+    }
+    .more-icon-wrapper:hover .active-icon {
+        display: block;
+    }
+    .more-icon-wrapper:hover .default-icon {
+        display: none;
+    }
+    .copy-icon-wrapper .active-icon {
+        display: none;
+    }
+    .copy-icon-wrapper:hover .active-icon {
+        display: inline-block;
+    }
+    .copy-icon-wrapper:hover .default-icon {
+        display: none;
+    }
+    .languageSelector {
+        height: calc(100vh - 80px);
+    }
+    @keyframes sendAnimation {
+        0% {
+            transform: translateY(0px);
+        }
+        50% {
+            transform: translateY(-8px);
+        }
+        100% {
+            transform: translateY(0px);
+        }
+    }
+    @keyframes receiveAnimation {
+        to {
+            transform: translateY(8px);
+        }
+    }
+    @keyframes swapAnimation {
+        to {
+            -webkit-transform: rotate(180deg);
+        }
+    }
+    @-webkit-keyframes swapAnimation {
+        to {
+            -webkit-transform: rotate(180deg);
+        }
+    }
+    @keyframes spin {
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @-webkit-keyframes spin {
+        to {
+            -webkit-transform: rotate(360deg);
+        }
+    }
+    @keyframes fade-in {
+        0% {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+    @keyframes fade-in2 {
+        0% {
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0px);
+        }
+    }
+
+    @keyframes slide {
+        0% {
+            transform: translateY(0);
+        }
+        15%,
+        30% {
+            transform: translateY(-100%);
+        }
+        45%,
+        60% {
+            transform: translateY(-200%);
+        }
+        75%,
+        90% {
+            transform: translateY(-300%);
+        }
+        100% {
+            transform: translateY(-400%);
+        }
+    }
+}
